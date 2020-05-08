@@ -1,0 +1,26 @@
+version: "3"
+services:
+  configserver:
+    build: configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - internal
+
+  vault:
+    image: vault
+    ports:
+      - "8200:8200"
+    volumes:
+      - "./vault/policies:/vault/policies"
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_TOKEN=myroot
+      - VAULT_DEV_ROOT_TOKEN_ID=myroot
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
