@@ -1,6 +1,6 @@
 # spring-config-vault-demo
 
-This is a small demo with Vault and Spring Cloud Config Server. Only for Demo pur.
+This is a small demo with Vault and Spring Cloud Config Server. Only for Demo purposes!
 
 ---
 
@@ -24,18 +24,18 @@ This is a small demo with Vault and Spring Cloud Config Server. Only for Demo pu
 
 ### Setup
 
-The Spring Config Server and the Vault are delivered as containers. To start both use docker compose.
+The Spring Config Server and the Vault are delivered as containers. To start both use docker compose:
 
 ```
 $ docker-compose up
 ```
 
-You now can populate the Vault with the following python script. This will create three secrets: foo, bar, sql
+You now can populate the Vault with the following python script. This will create three secrets: **foo, bar, sql**:
 
 ```
 $ python3 generate_sample_secrets.py
 ```
-Now we want to apply a policy for each secret and generate a token for each secret based on the policies. Run following python script to apply the vault policies and generate a JSON file with the tokens.
+Now we want to apply a policy for each secret and generate a token for each secret based on the policies. Run following python script to apply the vault policies and generate a JSON file with the tokens:
 
 ```
 $ python3 generate_tokens.py
@@ -45,7 +45,7 @@ Now everything is setup and we can test the demo.
 
 ### Usage
 
-Following command will make foos secret available,
+Following command will make foos secret available:
 ```
 $ curl -X "GET" "http://localhost:8888/foo/default" -H "X-Config-Token:  <foo_client_token in tokens.json>" | jq
 ```
