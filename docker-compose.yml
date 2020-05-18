@@ -21,6 +21,33 @@ services:
     networks:
       - internal
 
+  postgres-db:
+    build: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=supersecretpassword
+      - VAULT_TOKEN=myroot
+    volumes:
+      - "./postgres/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh"
+      - "./postgres/pagila-data.sql:/docker-entrypoint-initdb.d/dump/pagila-data.sql"
+      - "./postgres/pagila-schema.sql:/docker-entrypoint-initdb.d/dump/pagila-schema.sql"
+      - "./postgres/init.sh:/docker-entrypoint-initdb.d/a1.sh"
+    depends_on:
+      - vault
+    networks:
+      internal:
+  webapp:
+    build: webapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - internal
+    environment:
+      - VAULT_TOKEN=myroot
 networks:
   internal:
     driver: bridge
