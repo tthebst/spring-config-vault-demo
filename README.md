@@ -46,7 +46,7 @@ The web application is available at [localhost:8080](http://localhost:8080). You
 
 ## Details
 
-![alt text](https://github.com/tthebst/spring-config-vault-demo/blob/postgres/graphics/app.pdf)
+![alt text](https://github.com/tthebst/spring-config-vault-demo/blob/postgres/graphics/app.svg)
 
 
 
