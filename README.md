@@ -1,6 +1,6 @@
 # spring-config-vault-demo
 
-This is a small demo with Vault and Spring Cloud Config Server. Only for Demo purposes!
+This is a small demo with Vault, Spring Cloud Config Server and Postgres. Only for Demo purposes!
 
 ---
 
