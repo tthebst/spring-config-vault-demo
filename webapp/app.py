@@ -50,11 +50,12 @@ if __name__ == "__main__":
         capabilities = ["read"]
     }
     """
-    # register new
+    # register new read only policy with vault
     vault.sys.create_or_update_policy(
         name='sql_read',
         policy=read_only_sql,
     )
+    # create token for read only policy
     token = vault.create_token(policies=['sql_read'], lease='12h')
     SQL_READ_TOKEN = token['auth']['client_token']
 
